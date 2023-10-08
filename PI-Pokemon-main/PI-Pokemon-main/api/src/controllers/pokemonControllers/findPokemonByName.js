@@ -1,34 +1,33 @@
-const Pokemon = require('../tablePokemon')
+const {Pokemon, Type} = require("../../db");
 const axios = require("axios");
 
+const URL = "https://pokeapi.co/api/v2/pokemon/";
 
 //*Controller for find pokemons by name
-const findPokemonByName = async (name) => {
-    const findName = name.toLowerCase();
-    // peticion a la base de datos
-  
-    const dbPokemons = await Pokemon.findAll({
-      where: {
-        name: {
-          [Sequelize.Op.iLike]: `%${findName}%`,
-        },
-      },
-    });
-  
-    // peticion a la API
-    const response = await axios.get(
-      `https://api-url.com/pokemons?name=${findName}`
-    );
-    const apiPokemons = response.data;
-    console.log(apiPokemons);
-  
-    // copia de la base de datos y la API
-    const Pokemons = [...dbPokemons, ...apiPokemons];
-  
-    if (Pokemons.length === 0) {
-      return "No existen pokemones con ese nombre";
-    }
-    return Pokemons;
-  };
+const findPokemonByName = async (req, res) => {
+  const {name} = req.query;
+  try {
+      const dbPokemons = await Pokemon.findOne({
+          where: {name:name},
+          include:{
+              model:Type,
+              attributes:["name"],
+              through:{
+                  attributes:[],
+              },
+          },
+      })
+      if(dbPokemons){
+          return res.status(200).send(dbPokemons.dataValues)
+      }
+      const {data} = await axios(`${URL}${name}`.toLowerCase())
+      res.status(200).send(data)
 
-  module.exports = findPokemonByName;
+  } catch (error) {
+      // if(error.response.status === 404) {
+      //     return res.status(404).send(`Pokemon con el nombre ${name} no Encontrado`)
+      // }
+      res.status(500).send(error.message)
+  }
+};
+module.exports = findPokemonByName;

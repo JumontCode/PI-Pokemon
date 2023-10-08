@@ -8,8 +8,10 @@ module.exports = (sequelize) =>{
             primaryKey: true,
         },
         name:{
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.ENUM,
+            values: ["magic", "water", "fire", "rock", 'unknown'],
+            allowNull: false,
+            defaultValue: "unknown",
         }
     },
     {
