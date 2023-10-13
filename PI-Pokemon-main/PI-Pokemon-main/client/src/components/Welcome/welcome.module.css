@@ -1,0 +1,70 @@
+.welcome{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container{
+    background-color: rgb(112, 108, 74);
+    width: 98%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    min-height: 550px;
+}
+
+.infoContainer{
+    width: 49%;
+    height: 100%;
+    min-height: 524px;
+    /* background-color: blue; */
+    margin: 15px auto 0 auto;
+    margin-top: 15px;
+    position: relative;
+}
+
+.infoText{
+    width: 300px;
+    height: 500px;
+    /* margin: 0 auto; */
+    /* background-color: rgb(129, 165, 197); */
+
+    position: absolute;
+    top: 10px;
+    left: 200px;
+    
+    /* margin: -25px 0 0 -25px; */
+}
+
+.text{
+    margin-top: 100px;
+}
+
+.title{
+    font-weight:bold;
+    color: yellow;
+}
+
+.subText{
+    color: yellow;
+}
+
+.infoImg{
+    width: 49%;
+    height: 100%;
+    /* background-color: blue; */
+    margin: 15px auto 0 auto;
+}
+
+.welcomeImg{
+    width: 660px;
+    height: 520px;
+}
+
+.infoButton{
+    margin-top: 10px;
+    width: 120px;
+    height: 60px;
+    border-radius: 5px;
+    font-size: 25px;
+}
