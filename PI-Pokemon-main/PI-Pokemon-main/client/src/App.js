@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className={bgImage()}>
-      <h1>Henry Pokemon</h1>
+      {/* <h1>Henry Pokemon</h1> */}
       <Routes>
 
         <Route path="/" element={<Welcome />} />

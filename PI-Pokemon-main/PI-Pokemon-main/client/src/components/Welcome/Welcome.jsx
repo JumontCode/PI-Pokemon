@@ -4,15 +4,19 @@ import imgWelcome from "../../resources/pokemon.jpg";
 export default function welcome() {
   return (
     <div className={styles.welcome} /**/>
-      <h1>Welcome to the official page of Pokemon</h1>
+      <br />
+      <h1 className={styles.title}>Welcome to the official page of Pokemon</h1>
 
       <div className={styles.container}>
         <div className={styles.infoContainer}>
           <div className={styles.infoText}>
             <div className={styles.text}>
-              <h2 className={styles.title}>Todo la información que necesitas sobre los Pokemones</h2>
+              <h2 className={styles.title}>
+                Todo la información que necesitas sobre Pokemones
+              </h2>
+              <br />
               <p className={styles.subText}>
-                <svg className={styles.chec}
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="icon icon-tabler icon-tabler-check"
                   width="20"
@@ -29,9 +33,8 @@ export default function welcome() {
                 </svg>{" "}
                 Más de 500 pokemones
               </p>
-
-              <p>
-                <svg className={styles.chec}
+              <p className={styles.subText}>
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="icon icon-tabler icon-tabler-check"
                   width="20"
@@ -48,9 +51,11 @@ export default function welcome() {
                 </svg>{" "}
                 información detallada y concisa
               </p>
-              <p>Qué esperas, haz click en acceder</p>
+              <p className={styles.subText}>
+                Qué esperas, haz click en acceder
+              </p>
             </div>
-
+            <br />
             <button className={styles.infoButton}>Acceder</button>
           </div>
         </div>
