@@ -52,7 +52,7 @@ export default function welcome() {
                 información detallada y concisa
               </p>
               <p className={styles.subText}>
-                Qué esperas, haz click en acceder
+                Qué esperas, haz click en acceder y descubre todo lo que tenemos para ti
               </p>
             </div>
             <br />

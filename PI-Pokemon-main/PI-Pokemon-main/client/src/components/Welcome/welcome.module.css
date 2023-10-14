@@ -43,12 +43,17 @@
 }
 
 .title{
-    font-weight:bold;
+    font-weight:800;
     color: yellow;
 }
 
 .subText{
     color: rgb(255, 255, 255);
+}
+
+.subText:hover{
+    background-color: aquamarine;
+    color: yellow;
 }
 
 .infoImg{
@@ -71,6 +76,11 @@
     font-size: 25px;
     position: absolute;
     left: 100px;
-    color: yellow;
-    background: red;
+    color: rgb(255,211,62);
+    background:rgb(204,6,2);
+}
+
+.infoButton:hover{
+    background-color: aquamarine;
+    color: rgb(0, 0, 0);
 }

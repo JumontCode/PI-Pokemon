@@ -1,6 +1,9 @@
 import './App.css';
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import {Welcome} from './components/index'
+import { Routes, Route, useLocation /*, useNavigate*/ } from "react-router-dom";
+// import {Welcome, SearchBar} from './components/index'
+
+ import Card from './components/Card/Card'
+
 function App() {
 
   const location = useLocation();
@@ -19,8 +22,6 @@ function App() {
     } else if (location.pathname === "/about") {
       return "about";
     } 
-
-    
   }
 
   return (
@@ -28,7 +29,8 @@ function App() {
       {/* <h1>Henry Pokemon</h1> */}
       <Routes>
 
-        <Route path="/" element={<Welcome />} />
+        {/* <Route path="/" element={<Welcome />} /> */}
+        <Route path="/" element={<Card />} />
       </Routes>
     </div>
   );

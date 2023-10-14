@@ -1,0 +1,31 @@
+.searchContainer{
+    display: flex;
+    height: 40px;
+    width: 200px;
+    background: red;
+    position: absolute;
+}
+
+.searchContainer input{
+    /* position: relative;
+    top: 2px;
+    left: 2px; */
+    margin-top: 5px;
+    margin-left: 5px;
+    padding:4px 10px;
+    border-radius: 5px;
+    background-color: rgb(233, 57, 57);
+    color: yellow;
+} 
+
+.searchContainer button{
+    background-color: yellow;
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 4px;
+    margin-left: 5px;
+    margin-top: 5px;
+    color: red;
+    font-weight: 550;
+}
+
