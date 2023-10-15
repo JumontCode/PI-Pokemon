@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // import image from "../../resources/Characters/images-1.jpeg";
 
-export default function Card({id,name,types,image}) {
+export default function Card({id,name,type,image}) {
   return (
 
     <div className={styles.containerCard}>
@@ -14,9 +14,9 @@ export default function Card({id,name,types,image}) {
 
         <div className={styles.info}>
           <Link to={`/detail/${id}`}>
-            <h2>{"Nombre:"}</h2>
+            <h2>{name}</h2>
           </Link>
-          <h2>{"Tipos"}</h2>
+          <h2>{type}</h2>
         </div>
       </div>
     </div>

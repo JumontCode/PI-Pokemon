@@ -1,0 +1,15 @@
+.containerCards{
+    width: 98%;
+    min-height: 640px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    background: rgb(206, 194, 194);
+    align-items: center;
+}
