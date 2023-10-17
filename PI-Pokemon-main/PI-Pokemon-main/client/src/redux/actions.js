@@ -1,21 +1,16 @@
-// import axios from "axios";
-// const URL = "http://localhost:3001/rickandmorty/fav/";
+import axios from "axios";
 
+export const GET_POKEMONS = "GET_POKEMONS";
 
-//Action types
-// export const ADD_FAV = 'ADD_FAV';
-// export const REMOVE_FAV = 'REMOVE_FAV';
-// export const GET_CHARACTER_DETAIL = "GET_CHARACTER_DETAIL";
-// export const CLEAN_DETAIL = "CLEAN_DETAIL";
-// export const FILTER = "FILTER";
-// export const ORDER = "ORDER";
+export const SET_SOURCE = "SET_SOURCE";
 
+const URL = "http://localhost:3001/pokemons";
 
+export const getPokemons = () => {
+  return async function (dispatch) {
+    const {data} = await axios.get(`${URL}`);
+    const AllPokemons = data;
 
-
-// export const orderCards = (order) => {
-//     return {
-//         type: ORDER,
-//         payload: order,
-//     }
-//   };
+    dispatch({ type: GET_POKEMONS, payload: AllPokemons });
+  };
+};

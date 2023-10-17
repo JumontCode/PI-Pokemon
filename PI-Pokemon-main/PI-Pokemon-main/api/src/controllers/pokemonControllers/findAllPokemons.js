@@ -2,7 +2,7 @@ const {Pokemon} = require("../../db.js")
 
 //*Controller for find pokemons
 const axios = require("axios")
-const URL = "https://pokeapi.co/api/v2/pokemon?limit=100";
+const URL = "https://pokeapi.co/api/v2/pokemon?limit=22";
 
 const searchPokemons = async(value) => {
     const response = await axios(value)

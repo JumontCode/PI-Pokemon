@@ -1,33 +1,66 @@
 import "./App.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Routes, Route, useLocation /*, useNavigate*/ } from "react-router-dom";
 // import {Welcome, SearchBar} from './components/index'
 
 import Cards from "./components/Cards/Cards";
-import image1 from "../src/resources/Characters/images-1.jpeg";
-import image2 from "../src/resources/Characters/images-2.webp";
-import image3 from "../src/resources/Characters/images-3.jpeg";
-import image4 from "../src/resources/Characters/images-4.png";
-import image5 from "../src/resources/Characters/images-5.jpeg";
-
-const character = [
-  { id: 1, name: "Juan", type: "fire", image: image1 },
-  { id: 2, name: "Lucas", type: "fly", image: image2 },
-  { id: 3, name: "Matias", type: "flower", image: image3 },
-  { id: 4, name: "Luis", type: "magic", image: image4 },
-  { id: 5, name: "Sandy", type: "rayn", image: image5 },
-  { id: 1, name: "Juan", type: "fire", image: image1 },
-  { id: 2, name: "Lucas", type: "fly", image: image2 },
-  { id: 3, name: "Matias", type: "flower", image: image3 },
-  { id: 4, name: "Luis", type: "magic", image: image4 },
-  { id: 5, name: "Sandy", type: "rayn", image: image5 },
-  { id: 1, name: "Juan", type: "fire", image: image1 },
-  { id: 2, name: "Lucas", type: "fly", image: image2 },
-];
 
 function App() {
+  const itemsPerPage = 12;
+
+  const [datosFromApi, setDatosFromApi] = useState([]);
+  const [character, setCharacter] = useState([]);
+  const [currentPage, setcurrentPage] = useState(0);
+
   const location = useLocation();
 
-  //funcion para cambiar el fondo dependiendo la ruta
+  const AllPokemons = async () => {
+    try {
+      const {data} = await axios("http://localhost:3001/pokemons");
+  
+      console.log(data);
+      if (data) {
+        // Supongo que 'datosFromApi' es una función para manejar los datos recibidos
+        setDatosFromApi(data);
+
+        const initialPageData = data.slice(0, itemsPerPage);
+        setCharacter(initialPageData)
+      }
+    } catch (error) {
+      console.log({error: error.message});
+    }
+  };
+
+  useEffect(() => {
+    AllPokemons();
+  }, []);
+  
+  const nextHandler = () => {
+    const totalElementos = datosFromApi.length;
+    
+    const nextPage = currentPage + 1;
+    
+    const firstIndex = nextPage * itemsPerPage;
+    
+    if (firstIndex < totalElementos){
+      const nextPageData = datosFromApi.slice(firstIndex, firstIndex + itemsPerPage)
+      setCharacter(nextPageData);
+      setcurrentPage(nextPage);
+    }
+  };
+    
+  
+  const prevHandler = () => {
+    const prevPage = currentPage - 1;
+    
+    if (prevPage < 0) return;
+    
+    const firstIndex = prevPage * itemsPerPage;
+
+    setCharacter([...datosFromApi].splice(firstIndex, itemsPerPage));
+    setcurrentPage(prevPage);
+  };
   const bgImage = () => {
     if (location.pathname === "/") {
       return "welcome";
@@ -47,7 +80,18 @@ function App() {
       {/* <h1>Henry Pokemon</h1> */}
       <Routes>
         {/* <Route path="/" element={<Welcome />} /> */}
-        <Route path="/" element={<Cards characters={character} />} />
+        <Route
+          path="/"
+          element={
+            <Cards
+              // AllPokemons={AllPokemons}
+              currentPage={currentPage}
+              characters={character}
+              nextHandler={nextHandler}
+              prevHandler={prevHandler}
+            />
+          }
+        />
       </Routes>
     </div>
   );
